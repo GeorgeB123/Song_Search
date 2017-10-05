@@ -64,12 +64,16 @@ class CollectionViewController: UICollectionViewController {
 
 //MARK: - Extension with private functions
 
-extension CollectionViewController {
+extension CollectionViewController: loadStructArray {
     
     func displayAlbums() {
         let query = "http://api.deezer.com/artist/\(self.id)/albums"
+        load(query: query, type: 1)
+    }
+    
+    func load(query: String, type: Int) {
         let call = API()
-        call.getRequest(matching: query, type: 1) { albums, total in
+        call.getRequest(matching: query, type: type) { albums, total in
             DispatchQueue.main.async {
                 self.albums = albums as! [Albums]
                 self.collectionView?.reloadData()
@@ -77,7 +81,7 @@ extension CollectionViewController {
             if total > 25 {
                 for i in 25..<total where i%25 == 0 {
                     let query = "http://api.deezer.com/artist/\(self.id)/albums?index=\(i)"
-                    call.getRequest(matching: query, type: 1) { albums, total in
+                    call.getRequest(matching: query, type: type) { albums, total in
                         DispatchQueue.main.async {
                             self.albums += albums as! [Albums]
                             self.collectionView?.reloadData()

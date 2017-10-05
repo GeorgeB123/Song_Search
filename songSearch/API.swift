@@ -8,6 +8,10 @@
 //
 import UIKit
 
+protocol loadStructArray {
+    func load(query: String, type: Int)
+}
+
 class API: URLSession {
     
     //MARK: - Send Request

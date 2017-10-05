@@ -61,19 +61,23 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
 
 //MARK: - UI Search Results Updating Delegate
 
-extension TableViewController: UISearchResultsUpdating {
+extension TableViewController: UISearchResultsUpdating, loadStructArray {
     
     func updateSearchResults(for searchController: UISearchController) {
         var query = searchController.searchBar.text!
         if !query.isEmpty {
             query = query.replacingOccurrences(of: " ", with: "-")
             query = "http://api.deezer.com/search/artist?q=" + query
-            let call = API()
-            call.getRequest(matching: query, type: 0) { artists, total in
-                DispatchQueue.main.async {
-                    self.artists = artists as! [Artists]
-                    self.tableView.reloadData()
-                }
+            load(query: query, type: 0)
+        }
+    }
+    
+    func load(query: String, type: Int) {
+        let call = API()
+        call.getRequest(matching: query, type: type) { artists, total in
+            DispatchQueue.main.async {
+                self.artists = artists as! [Artists]
+                self.tableView.reloadData()
             }
         }
     }
