@@ -63,12 +63,17 @@ extension ViewController: UITableViewDataSource {
 
 //MARK: - Private Methods
 
-extension ViewController {
+extension ViewController: loadStructArray {
     
     func displayTracks() {
         let query = "http://api.deezer.com/album/\(self.id)/tracks"
+        load(query: query, type: 2)
+        
+    }
+    
+    func load(query: String, type: Int) {
         let call = API()
-        call.getRequest(matching: query, type: 2) { tracks, total in
+        call.getRequest(matching: query, type: type) { tracks, total in
             DispatchQueue.main.async {
                 self.songs = tracks as! [Tracks]
                 self.songTable.reloadData()
@@ -76,7 +81,7 @@ extension ViewController {
             if total > 25 {
                 for i in 25..<total where i%25 == 0 {
                     let query = "http://api.deezer.com/album/\(self.id)/tracks?index=\(i)"
-                    call.getRequest(matching: query, type: 2) { albums, total in
+                    call.getRequest(matching: query, type: type) { albums, total in
                         DispatchQueue.main.async {
                             self.songs += tracks as! [Tracks]
                             self.songTable.reloadData()
