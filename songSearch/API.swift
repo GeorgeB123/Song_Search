@@ -8,15 +8,38 @@
 //
 import UIKit
 
+//MARK: - Protocol to load content
+
 protocol loadStructArray {
-    func load(query: String, type: Int)
+    func load(query: String, type: Types)
 }
 
-class API: URLSession {
+//MARK - struct types
+
+enum Types {
+    case Artist
+    case Albums
+    case Tracks
+}
+
+//MARK: - UIImage Extension
+
+extension UIImage {
+    
+    func getImage(urlString: String) -> UIImage{
+        guard let url = URL(string: urlString), let data = try? Data(contentsOf: url) else{
+            return UIImage()
+        }
+        let image = UIImage(data: data)!
+        return image
+    }
+}
+
+class API: URLSession  {
     
     //MARK: - Send Request
     
-    func getRequest(matching query: String, type: Int, completion: @escaping ([Any], Int) -> Void) {
+    func getRequest(matching query: String, type: Types, completion: @escaping ([Any], Int) -> Void) {
         let request = NSMutableURLRequest(url: NSURL(string: query)! as URL)
         let session = URLSession.shared
         request.httpMethod = "GET"
@@ -35,22 +58,20 @@ class API: URLSession {
     
     //MARK: - Private Methods
     
-    private func structTypeToAppend(requestArray: inout [Any], type: Int, result: Any){
+    private func structTypeToAppend(requestArray: inout [Any], type: Types, result: Any){
         switch type {
-        case 0:
+        case .Artist:
             if let object = Artists.parse(result as! [String : Any]){
                 requestArray.append(object)
             }
-        case 1:
+        case .Albums:
             if let object = Albums.parse(result as! [String : Any]){
                 requestArray.append(object)
             }
-        case 2:
+        case .Tracks:
             if let object = Tracks.parse(result as! [String : Any]){
                 requestArray.append(object)
             }
-        default:
-            return
         }
     }
     

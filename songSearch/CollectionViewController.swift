@@ -68,10 +68,10 @@ extension CollectionViewController: loadStructArray {
     
     func displayAlbums() {
         let query = "http://api.deezer.com/artist/\(self.id)/albums"
-        load(query: query, type: 1)
+        load(query: query, type: .Albums)
     }
     
-    func load(query: String, type: Int) {
+    func load(query: String, type: Types) {
         let call = API()
         call.getRequest(matching: query, type: type) { albums, total in
             DispatchQueue.main.async {

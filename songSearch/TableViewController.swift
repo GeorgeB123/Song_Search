@@ -68,11 +68,11 @@ extension TableViewController: UISearchResultsUpdating, loadStructArray {
         if !query.isEmpty {
             query = query.replacingOccurrences(of: " ", with: "-")
             query = "http://api.deezer.com/search/artist?q=" + query
-            load(query: query, type: 0)
+            load(query: query, type: .Artist)
         }
     }
     
-    func load(query: String, type: Int) {
+    func load(query: String, type: Types) {
         let call = API()
         call.getRequest(matching: query, type: type) { artists, total in
             DispatchQueue.main.async {
@@ -84,18 +84,6 @@ extension TableViewController: UISearchResultsUpdating, loadStructArray {
     
 }
 
-//MARK: - UIImage Extension
 
-extension UIImage {
-    
-    func getImage(urlString: String) -> UIImage{
-        guard let url = URL(string: urlString), let data = try? Data(contentsOf: url) else{
-            return UIImage()
-        }
-        let image = UIImage(data: data)!
-        return image
-    }
-    
-}
 
 
