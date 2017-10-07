@@ -14,27 +14,6 @@ protocol loadStructArray {
     func load(query: String, type: Types)
 }
 
-//MARK - struct types
-
-enum Types {
-    case Artist
-    case Albums
-    case Tracks
-}
-
-//MARK: - UIImage Extension
-
-extension UIImage {
-    
-    func getImage(urlString: String) -> UIImage{
-        guard let url = URL(string: urlString), let data = try? Data(contentsOf: url) else{
-            return UIImage()
-        }
-        let image = UIImage(data: data)!
-        return image
-    }
-}
-
 class API: URLSession  {
     
     //MARK: - Send Request

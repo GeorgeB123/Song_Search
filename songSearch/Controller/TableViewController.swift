@@ -55,7 +55,6 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         viewController.id = artists[indexPath.row].id
         self.navigationController!.pushViewController(viewController, animated: true)
     }
- 
     
 }
 

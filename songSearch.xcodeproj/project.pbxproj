@@ -13,7 +13,6 @@
 		3657EB001F8626DA0058BB0F /* Artists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657EAF21F8626DA0058BB0F /* Artists.swift */; };
 		3657EB011F8626DA0058BB0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3657EAF31F8626DA0058BB0F /* Assets.xcassets */; };
 		3657EB021F8626DA0058BB0F /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 3657EAF41F8626DA0058BB0F /* Base.lproj */; };
-		3657EB031F8626DA0058BB0F /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657EAF51F8626DA0058BB0F /* CollectionViewCell.swift */; };
 		3657EB041F8626DA0058BB0F /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657EAF61F8626DA0058BB0F /* CollectionViewController.swift */; };
 		3657EB051F8626DA0058BB0F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3657EAF71F8626DA0058BB0F /* Info.plist */; };
 		3657EB061F8626DA0058BB0F /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657EAF81F8626DA0058BB0F /* SongTableViewCell.swift */; };
@@ -22,6 +21,8 @@
 		3657EB091F8626DA0058BB0F /* Tracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657EAFB1F8626DA0058BB0F /* Tracks.swift */; };
 		3657EB0A1F8626DA0058BB0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657EAFC1F8626DA0058BB0F /* ViewController.swift */; };
 		3657EB0C1F8627110058BB0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3657EB0B1F8627110058BB0F /* Main.storyboard */; };
+		36CC50021F89774D008139B7 /* UIImage+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CC50011F89774C008139B7 /* UIImage+Types.swift */; };
+		36CC50041F897B24008139B7 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CC50031F897B24008139B7 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,22 +39,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3657EAEF1F8626DA0058BB0F /* Albums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Albums.swift; sourceTree = "<group>"; };
-		3657EAF01F8626DA0058BB0F /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		3657EAEF1F8626DA0058BB0F /* Albums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Albums.swift; path = Model/Albums.swift; sourceTree = "<group>"; };
+		3657EAF01F8626DA0058BB0F /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Model/API.swift; sourceTree = "<group>"; };
 		3657EAF11F8626DA0058BB0F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3657EAF21F8626DA0058BB0F /* Artists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artists.swift; sourceTree = "<group>"; };
+		3657EAF21F8626DA0058BB0F /* Artists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Artists.swift; path = Model/Artists.swift; sourceTree = "<group>"; };
 		3657EAF31F8626DA0058BB0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3657EAF41F8626DA0058BB0F /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = "<group>"; };
-		3657EAF51F8626DA0058BB0F /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		3657EAF61F8626DA0058BB0F /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		3657EAF61F8626DA0058BB0F /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = Controller/CollectionViewController.swift; sourceTree = "<group>"; };
 		3657EAF71F8626DA0058BB0F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3657EAF81F8626DA0058BB0F /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
-		3657EAF91F8626DA0058BB0F /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		3657EAFA1F8626DA0058BB0F /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		3657EAFB1F8626DA0058BB0F /* Tracks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tracks.swift; sourceTree = "<group>"; };
-		3657EAFC1F8626DA0058BB0F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3657EAF81F8626DA0058BB0F /* SongTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongTableViewCell.swift; path = View/SongTableViewCell.swift; sourceTree = "<group>"; };
+		3657EAF91F8626DA0058BB0F /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = View/TableViewCell.swift; sourceTree = "<group>"; };
+		3657EAFA1F8626DA0058BB0F /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = Controller/TableViewController.swift; sourceTree = "<group>"; };
+		3657EAFB1F8626DA0058BB0F /* Tracks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tracks.swift; path = Model/Tracks.swift; sourceTree = "<group>"; };
+		3657EAFC1F8626DA0058BB0F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controller/ViewController.swift; sourceTree = "<group>"; };
 		3657EB0B1F8627110058BB0F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3684569F1F77D73F00AF72EB /* songSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = songSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		36CC50011F89774C008139B7 /* UIImage+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+Types.swift"; path = "Model/UIImage+Types.swift"; sourceTree = "<group>"; };
+		36CC50031F897B24008139B7 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = View/CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				3657EAF01F8626DA0058BB0F /* API.swift */,
 				3657EAF21F8626DA0058BB0F /* Artists.swift */,
 				3657EAFB1F8626DA0058BB0F /* Tracks.swift */,
+				36CC50011F89774C008139B7 /* UIImage+Types.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -92,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				3657EB0B1F8627110058BB0F /* Main.storyboard */,
-				3657EAF51F8626DA0058BB0F /* CollectionViewCell.swift */,
+				36CC50031F897B24008139B7 /* CollectionViewCell.swift */,
 				3657EAF81F8626DA0058BB0F /* SongTableViewCell.swift */,
 				3657EAF91F8626DA0058BB0F /* TableViewCell.swift */,
 			);
@@ -207,10 +210,11 @@
 				3657EB041F8626DA0058BB0F /* CollectionViewController.swift in Sources */,
 				3657EB091F8626DA0058BB0F /* Tracks.swift in Sources */,
 				3657EB071F8626DA0058BB0F /* TableViewCell.swift in Sources */,
-				3657EB031F8626DA0058BB0F /* CollectionViewCell.swift in Sources */,
 				3657EB0A1F8626DA0058BB0F /* ViewController.swift in Sources */,
 				3657EAFF1F8626DA0058BB0F /* AppDelegate.swift in Sources */,
 				3657EB061F8626DA0058BB0F /* SongTableViewCell.swift in Sources */,
+				36CC50021F89774D008139B7 /* UIImage+Types.swift in Sources */,
+				36CC50041F897B24008139B7 /* CollectionViewCell.swift in Sources */,
 				3657EAFE1F8626DA0058BB0F /* API.swift in Sources */,
 				3657EB001F8626DA0058BB0F /* Artists.swift in Sources */,
 				3657EB081F8626DA0058BB0F /* TableViewController.swift in Sources */,
