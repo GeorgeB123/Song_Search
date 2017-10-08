@@ -96,6 +96,12 @@ extension ViewController: loadStructArray {
         }
     }
     
+}
+
+//MARK: - Private Method, seconds to minutes conversion
+
+extension ViewController {
+    
     func secondsToMinutes(seconds: Int) -> String {
         let minutes = seconds/60
         let seconds = seconds%60
