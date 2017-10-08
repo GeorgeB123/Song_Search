@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     var albumName: String = ""
     var id: Int = 0
-    var albumImage: UIImage = UIImage()
+    var albumImageUrl: String?
     var songs = [Tracks]()
     
     @IBOutlet weak var albumCover: UIImageView!
@@ -25,7 +25,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         songTable.dataSource = self
         self.title = albumName
-        self.albumCover.image = albumImage
+        if let image = albumImageUrl  {
+            self.albumCover.imageFromURL(urlString: image)
+        } else {
+            self.albumCover.image = UIImage()
+        }
         displayTracks()
         songTable.reloadData()
     }
@@ -81,7 +85,7 @@ extension ViewController: loadStructArray {
             if total > 25 {
                 for i in 25..<total where i%25 == 0 {
                     let query = "http://api.deezer.com/album/\(self.id)/tracks?index=\(i)"
-                    call.getRequest(matching: query, type: type) { albums, total in
+                    call.getRequest(matching: query, type: type) { tracks, total in
                         DispatchQueue.main.async {
                             self.songs += tracks as! [Tracks]
                             self.songTable.reloadData()

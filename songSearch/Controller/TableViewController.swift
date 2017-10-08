@@ -41,10 +41,9 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath as IndexPath) as! TableViewCell
-        let img = UIImage()
         if self.searchController.isActive {
             cell.artistName.text = self.artists[indexPath.row].name
-            cell.artistImage.image = img.getImage(urlString: self.artists[indexPath.row].pictureString!)
+            cell.artistImage.imageFromURL(urlString: artists[indexPath.row].pictureString!)
         }
         return cell
     }

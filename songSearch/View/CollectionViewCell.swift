@@ -15,6 +15,5 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var albumCover: UIImageView!
     
     @IBOutlet weak var albumTitle: UILabel!
-
     
 }

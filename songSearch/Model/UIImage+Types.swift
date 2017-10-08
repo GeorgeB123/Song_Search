@@ -16,17 +16,24 @@ enum Types {
     case Tracks
 }
 
-//MARK: - UIImage Extension
+//MARK: - UIImageView extension - couldn't get image caching to work so still there's some flicker on images
 
-extension UIImage {
-    
-    func getImage(urlString: String) -> UIImage{
-        guard let url = URL(string: urlString), let data = try? Data(contentsOf: url) else{
-            return UIImage()
-        }
-        let image = UIImage(data: data)!
-        return image
+extension UIImageView {
+    public func imageFromURL(urlString: String) {
+        
+        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            DispatchQueue.main.async(execute: { () -> Void in
+                let image = UIImage(data: data!)
+                self.image = image
+            })
+            
+        }).resume()
     }
+    
 }
-
 

@@ -15,10 +15,9 @@ class CollectionViewController: UICollectionViewController {
     var artist: String = ""
     var id: Int = 0
     var albums = [Albums]();
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = artist + " - Albums"
         displayAlbums()
 
@@ -35,20 +34,20 @@ class CollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell
-        let img = UIImage()
-        cell?.albumTitle.text = self.albums[indexPath.row].title
-        cell?.albumCover.image = img.getImage(urlString: self.albums[indexPath.row].cover!)
-        return cell!
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else {
+            fatalError("Cell does not exist")
+        }
+        cell.albumTitle.text = self.albums[indexPath.row].title
+        cell.albumCover.imageFromURL(urlString: albums[indexPath.row].cover!)
+        return cell
     }
 
     // MARK: UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         let viewController = self.storyboard!.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-        let img = UIImage()
         viewController.albumName = self.artist + " - " + albums[indexPath.row].title
-        viewController.albumImage = img.getImage(urlString: albums[indexPath.row].largeCover!)
+        viewController.albumImageUrl = albums[indexPath.row].largeCover!
         viewController.id = albums[indexPath.row].id
         self.navigationController!.pushViewController(viewController, animated: true)
     }
@@ -85,6 +84,7 @@ extension CollectionViewController: loadStructArray {
                         DispatchQueue.main.async {
                             self.albums += albums as! [Albums]
                             self.collectionView?.reloadData()
+                            self.collectionView?.scrollRectToVisible(CGRect.zero, animated: false)
                         }
                     }
                 }
