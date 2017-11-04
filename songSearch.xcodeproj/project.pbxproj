@@ -20,6 +20,7 @@
 		3657EB091F8626DA0058BB0F /* Tracks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657EAFB1F8626DA0058BB0F /* Tracks.swift */; };
 		3657EB0A1F8626DA0058BB0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3657EAFC1F8626DA0058BB0F /* ViewController.swift */; };
 		3657EB0C1F8627110058BB0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3657EB0B1F8627110058BB0F /* Main.storyboard */; };
+		36ACD4F41FAE03EF00CCC9BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ACD4F31FAE03EF00CCC9BB /* Constants.swift */; };
 		36CC50021F89774D008139B7 /* UIImage+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CC50011F89774C008139B7 /* UIImage+Types.swift */; };
 		36CC50041F897B24008139B7 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CC50031F897B24008139B7 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		3657EAFC1F8626DA0058BB0F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controller/ViewController.swift; sourceTree = "<group>"; };
 		3657EB0B1F8627110058BB0F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3684569F1F77D73F00AF72EB /* songSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = songSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		36ACD4F31FAE03EF00CCC9BB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Model/Constants.swift; sourceTree = "<group>"; };
 		36CC50011F89774C008139B7 /* UIImage+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+Types.swift"; path = "Model/UIImage+Types.swift"; sourceTree = "<group>"; };
 		36CC50031F897B24008139B7 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = View/CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 				3657EAF21F8626DA0058BB0F /* Artists.swift */,
 				3657EAFB1F8626DA0058BB0F /* Tracks.swift */,
 				36CC50011F89774C008139B7 /* UIImage+Types.swift */,
+				36ACD4F31FAE03EF00CCC9BB /* Constants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				3657EAFF1F8626DA0058BB0F /* AppDelegate.swift in Sources */,
 				3657EB061F8626DA0058BB0F /* SongTableViewCell.swift in Sources */,
 				36CC50021F89774D008139B7 /* UIImage+Types.swift in Sources */,
+				36ACD4F41FAE03EF00CCC9BB /* Constants.swift in Sources */,
 				36CC50041F897B24008139B7 /* CollectionViewCell.swift in Sources */,
 				3657EAFE1F8626DA0058BB0F /* API.swift in Sources */,
 				3657EB001F8626DA0058BB0F /* Artists.swift in Sources */,

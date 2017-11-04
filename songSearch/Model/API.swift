@@ -11,7 +11,7 @@ import UIKit
 //MARK: - Protocol to load content
 
 protocol loadStructArray {
-    func load(query: String, type: Types)
+    func loadAPIArray(query: String, type: Types)
 }
 
 class API: URLSession  {

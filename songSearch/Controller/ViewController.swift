@@ -56,7 +56,9 @@ extension ViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SongTableCell", for: indexPath as IndexPath) as! SongTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SongTableCell", for: indexPath as IndexPath) as? SongTableViewCell else {
+            fatalError("Cell does not exist")
+        }
         cell.songName.text = self.songs[indexPath.row].title
         cell.trackPosition.text = String(self.songs[indexPath.row].trackPosition) + "."
         cell.runTime.text = secondsToMinutes(seconds: self.songs[indexPath.row].runTime)
@@ -70,20 +72,20 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: loadStructArray {
     
     func displayTracks() {
-        let query = "http://api.deezer.com/album/\(self.id)/tracks"
-        load(query: query, type: .Tracks)
+        let query = Constants.deezerBaseUrl + "album/\(self.id)/tracks"
+        loadAPIArray(query: query, type: .Tracks)
         
     }
     
-    func load(query: String, type: Types) {
+    func loadAPIArray(query: String, type: Types) {
         let call = API()
         call.getRequest(matching: query, type: type) { tracks, total in
             DispatchQueue.main.async {
                 self.songs = tracks as! [Tracks]
                 self.songTable.reloadData()
             }
-            if total > 25 {
-                for i in 25..<total where i%25 == 0 {
+            if total > Constants.numberOfObjectsPerPage {
+                for i in Constants.numberOfObjectsPerPage..<total where i%Constants.numberOfObjectsPerPage == 0 {
                     let query = "http://api.deezer.com/album/\(self.id)/tracks?index=\(i)"
                     call.getRequest(matching: query, type: type) { tracks, total in
                         DispatchQueue.main.async {

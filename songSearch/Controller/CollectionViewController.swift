@@ -66,19 +66,19 @@ class CollectionViewController: UICollectionViewController {
 extension CollectionViewController: loadStructArray {
     
     func displayAlbums() {
-        let query = "http://api.deezer.com/artist/\(self.id)/albums"
-        load(query: query, type: .Albums)
+        let query = Constants.deezerBaseUrl + "artist/\(self.id)/albums"
+        loadAPIArray(query: query, type: .Albums)
     }
     
-    func load(query: String, type: Types) {
+    func loadAPIArray(query: String, type: Types) {
         let call = API()
         call.getRequest(matching: query, type: type) { albums, total in
             DispatchQueue.main.async {
                 self.albums = albums as! [Albums]
                 self.collectionView?.reloadData()
             }
-            if total > 25 {
-                for i in 25..<total where i%25 == 0 {
+            if total > Constants.numberOfObjectsPerPage {
+                for i in Constants.numberOfObjectsPerPage..<total where i%Constants.numberOfObjectsPerPage == 0 {
                     let query = "http://api.deezer.com/artist/\(self.id)/albums?index=\(i)"
                     call.getRequest(matching: query, type: type) { albums, total in
                         DispatchQueue.main.async {

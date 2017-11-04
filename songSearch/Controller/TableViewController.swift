@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController, UISearchBarDelegate {
+class TableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
     //MARK: - Properties
     
@@ -40,7 +40,9 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath as IndexPath) as! TableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath as IndexPath) as? TableViewCell else {
+            fatalError("Cell does not exist")
+        }
         if self.searchController.isActive {
             cell.artistName.text = self.artists[indexPath.row].name
             cell.artistImage.imageFromURL(urlString: artists[indexPath.row].pictureString!)
@@ -49,7 +51,9 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = self.storyboard!.instantiateViewController(withIdentifier: "CollectionViewController") as! CollectionViewController
+        guard let viewController = self.storyboard!.instantiateViewController(withIdentifier: "CollectionViewController") as? CollectionViewController else {
+            fatalError("View does not exist")
+        }
         viewController.artist = artists[indexPath.row].name
         viewController.id = artists[indexPath.row].id
         self.navigationController!.pushViewController(viewController, animated: true)
@@ -59,18 +63,18 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
 
 //MARK: - UI Search Results Updating Delegate
 
-extension TableViewController: UISearchResultsUpdating, loadStructArray {
+extension TableViewController: loadStructArray {
     
     func updateSearchResults(for searchController: UISearchController) {
         var query = searchController.searchBar.text!
         if !query.isEmpty {
             query = query.replacingOccurrences(of: " ", with: "-")
-            query = "http://api.deezer.com/search/artist?q=" + query
-            load(query: query, type: .Artist)
+            query = Constants.deezerBaseUrl + "search/artist?q=" + query
+            loadAPIArray(query: query, type: .Artist)
         }
     }
     
-    func load(query: String, type: Types) {
+    func loadAPIArray(query: String, type: Types) {
         let call = API()
         call.getRequest(matching: query, type: type) { artists, total in
             DispatchQueue.main.async {
