@@ -14,15 +14,13 @@ struct Albums {
     
     let id: Int
     let title: String
-    let cover: String?
     let largeCover: String?
     
     //MARK: - Initialisation
     
-    init(id: Int, title: String, cover: String, largeCover: String) {
+    init(id: Int, title: String, largeCover: String) {
         self.id = id
         self.title = title
-        self.cover = cover
         self.largeCover = largeCover
     }
 }
@@ -34,9 +32,8 @@ extension Albums{
     static func parse(_ json: [String: Any]) -> Albums? {
         let id = json["id"] as? Int
         let title = json["title"] as? String
-        let cover = json["cover"] as? String ?? ""
         let largeCover = json["cover_big"] as? String ?? ""
-        return Albums(id: id!, title: title!, cover: cover, largeCover: largeCover)
+        return Albums(id: id!, title: title!, largeCover: largeCover)
     }
     
 }

@@ -38,7 +38,7 @@ class CollectionViewController: UICollectionViewController {
             fatalError("Cell does not exist")
         }
         cell.albumTitle.text = self.albums[indexPath.row].title
-        cell.albumCover.imageFromURL(urlString: albums[indexPath.row].cover!)
+        cell.albumCover.imageFromURL(urlString: albums[indexPath.row].largeCover!)
         return cell
     }
 

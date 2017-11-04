@@ -25,11 +25,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         songTable.dataSource = self
         self.title = albumName
-        if let image = albumImageUrl  {
-            self.albumCover.imageFromURL(urlString: image)
-        } else {
+        guard let image = albumImageUrl else {
             self.albumCover.image = UIImage()
+            return
         }
+        self.albumCover.imageFromURL(urlString: image)
         displayTracks()
         songTable.reloadData()
     }
